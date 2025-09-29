@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label"
 import { useEffect, useState } from "react"
 import ReactDOM from 'react-dom'
 
-const SignUp=({ setShowSignUpModal }) =>{
+const SignUp = ({ setShowSignUpModal }) => {
   const [signUp, setSignUp] = useState(null)
   const [isLogin, setIsLogin] = useState(false)
   const [formData, setFormData] = useState({
@@ -54,9 +54,9 @@ const SignUp=({ setShowSignUpModal }) =>{
       }
     } else {
       // { * Sign up Logic * }
-       const getAllUserData = JSON.parse(localStorage.getItem('userData')) || []
+      const getAllUserData = JSON.parse(localStorage.getItem('userData')) || []
 
-     const isAlreadyExist = getAllUserData.some(
+      const isAlreadyExist = getAllUserData.some(
         (user) => user.email === formData.email
       );
 
@@ -66,7 +66,7 @@ const SignUp=({ setShowSignUpModal }) =>{
       }
       toast.success('Successfully created Acoount ! ✔️')
 
-     
+
       const updatedUserData = [...getAllUserData, formData]
       localStorage.setItem('userData', JSON.stringify(updatedUserData))
       setShowSignUpModal(false)
@@ -76,9 +76,10 @@ const SignUp=({ setShowSignUpModal }) =>{
     <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-brightness-50">
 
       <Card className="w-full max-w-sm rounded">
-        <CardHeader>
 
-          <CardTitle > {!isLogin ? "Sign Up to your account" : "Login to your account"} </CardTitle>
+        <CardHeader>
+          <CardTitle  > {!isLogin ? "Sign Up to your account" : "Login to your account"}  </CardTitle>
+
           <CardDescription>
             {!isLogin ? "  Enter your name,email and password below to create  your account" : "Enter your email below to login to your account"}
           </CardDescription>
@@ -125,12 +126,12 @@ const SignUp=({ setShowSignUpModal }) =>{
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required name='password' onChange={handleChange} />
+                <Input id="password" type="password" placeholder='password...' required name='password' onChange={handleChange} />
               </div>
 
-             
-            
-            {/* ✅ Select Role Dropdown */}
+
+
+              {/* ✅ Select Role Dropdown */}
               {!isLogin && (
                 <div className="grid gap-2">
                   <Label htmlFor="role">Select Role</Label>
